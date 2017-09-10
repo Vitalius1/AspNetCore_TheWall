@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1 id="title">CodingDojo Wall</h1>
+<h3 id="welcome">Welcome @ViewBag.UserName!</h3>
+<a href="logout" id="logout">Logout</a>
+<hr>
+<div id="content">
+    <p>Post a message</p>
+    <!-- Message Form -->
+    <form action="/post" method="post">
+        <textarea name="message" cols="60" rows="6"></textarea>
+        <p id="err">@ViewBag.ErrorMessage</p>
+        <p id="err">@ViewBag.ErrorComment</p>
+        <input type="submit" value="Post a Message!" id="message-button">
+    </form>
+    <br>
+    @{
+        foreach(var msg in ViewBag.Messages)
+        {
+            <div class="message-comments">
+                <p class="bold">@msg["name"] - @msg["CreatedAt"].ToString("MMMM dd, yyyy")</p>
+                <p class="indented">@msg["message"]</p>
+                <br>
+                @foreach(var com in ViewBag.Comments)
+                {
+                    if(com["messagesID"] == msg["id"])
+                    {
+                        <div id="comments">
+                            <p class="bold">@com["creator"] - @com["CreatedAt"].ToString("MMMM dd, yyyy")</p>
+                            <p>@com["comment"]</p>
+                            <br>
+                        </div>
+                    }
+                }
+                <div id="comments">
+                    <form action="/comment" method="post">
+                        <input type="hidden" name="messageID" value="@msg["id"]">
+                        <textarea name="comment" cols="60" rows="3"></textarea>
+                        <input type="submit" value="Post a Comment!" id="comment-button">
+                    </form>
+                </div>
+            </div>
+        }
+    }
+</div>

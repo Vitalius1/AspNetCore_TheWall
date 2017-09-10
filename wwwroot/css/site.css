@@ -1,0 +1,48 @@
+/*Write all of your CSS here*/
+*{
+    margin: 3px;
+}
+span{
+    color: red;
+}
+#err{
+    color: red;
+}
+.bold{
+    font-weight: bold;
+}
+.indented{
+    margin-left: 20px;
+}
+#comments{
+    margin-left: 50px;
+}
+#message-button{
+    background: navy;
+    color: whitesmoke;
+    float: right;
+}
+#comment-button{
+    background: green;
+    color: whitesmoke;
+    float: right;
+}
+#content{
+    width: 85%;
+    margin: auto;
+}
+textarea{
+    width: 100%;
+}
+#title{
+    display: inline-block;
+    width: 65%;
+}
+#welcome{
+    display: inline-block;
+    width: 19%;
+}
+#logout{
+    display: inline-block;
+    width: 10%;
+}
